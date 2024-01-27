@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddQuiz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddQuiz.Designer.cs">
+      <DependentUpon>AddQuiz.cs</DependentUpon>
+    </Compile>
     <Compile Include="BuatAkun.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddQuiz.resx">
+      <DependentUpon>AddQuiz.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BuatAkun.resx">
       <DependentUpon>BuatAkun.cs</DependentUpon>
     </EmbeddedResource>
