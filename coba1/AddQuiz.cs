@@ -71,7 +71,7 @@ namespace coba1
             radioButton2.Checked = false;
             radioButton3.Checked = false;
             radioButton4.Checked = false;
-            answer_A.Text = ""; 
+            answer_A.Text = "";
             answer_B.Text = "";
             answer_C.Text = "";
             answer_D.Text = "";
@@ -81,24 +81,52 @@ namespace coba1
         private void button2_Click(object sender, EventArgs e)
         {
             DataClasses1DataContext dc4 = new DataClasses1DataContext();
-            Question questt = new Question();
 
-            questt.ID = 58;
-            questt.QuizID = UserID;
-            questt.Question1 = quest.Text;
-            questt.OptionA = answer_A.Text;
-            questt.OptionB = answer_B.Text;
-            questt.OptionC = answer_C.Text;
-            questt.OptionD = answer_D.Text;
-            questt.CorrectAnswer = correctAnsw;
+            try
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count-1;i++)
+                {
+                    var questString = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                    var opA = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                    var opB = dataGridView1.Rows[i].Cells[3].Value.ToString();
+                    var opC = dataGridView1.Rows[i].Cells[4].Value.ToString();
+                    var opD = dataGridView1.Rows[i].Cells[5].Value.ToString();
+                    var corect = dataGridView1.Rows[i].Cells[6].Value.ToString();
 
-            dc4.Questions.InsertOnSubmit(questt);
-            dc4.SubmitChanges();
-            
+                    // Create a new Question object for each iteration
+                    Question questt = new Question
+                    {
+
+                        QuizID = UserID,
+                        Question1 = questString,
+                        OptionA = opA,
+                        OptionB = opB,
+                        OptionC = opC,
+                        OptionD = opD,
+                        CorrectAnswer = corect
+                    };
 
 
+                    // Insert each Question object inside the loop
+                    dc4.Questions.InsertOnSubmit(questt);
+                    dc4.SubmitChanges();
+                }
+                    MessageBox.Show("Data Tersimpan");
+                    dataGridView1.DataSource = null;
 
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
+
+
+
+
+
+
     }
 }
+
