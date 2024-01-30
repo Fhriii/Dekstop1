@@ -31,6 +31,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,6 +53,11 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nama,
+            this.code,
+            this.desc,
+            this.number});
             this.dataGridView1.Location = new System.Drawing.Point(320, 104);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -68,6 +77,34 @@
             this.button1.Text = "Add Quiz";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // nama
+            // 
+            this.nama.HeaderText = "Name";
+            this.nama.MinimumWidth = 8;
+            this.nama.Name = "nama";
+            this.nama.ReadOnly = true;
+            // 
+            // code
+            // 
+            this.code.HeaderText = "Code";
+            this.code.MinimumWidth = 8;
+            this.code.Name = "code";
+            this.code.ReadOnly = true;
+            // 
+            // desc
+            // 
+            this.desc.HeaderText = "description";
+            this.desc.MinimumWidth = 8;
+            this.desc.Name = "desc";
+            this.desc.ReadOnly = true;
+            // 
+            // number
+            // 
+            this.number.HeaderText = "number";
+            this.number.MinimumWidth = 8;
+            this.number.Name = "number";
+            this.number.ReadOnly = true;
             // 
             // Main
             // 
@@ -90,5 +127,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nama;
+        private System.Windows.Forms.DataGridViewTextBoxColumn code;
+        private System.Windows.Forms.DataGridViewTextBoxColumn desc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn number;
     }
 }

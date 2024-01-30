@@ -26,15 +26,49 @@ namespace coba1
         private void Main_Load(object sender, EventArgs e)
         {
             DataClasses1DataContext dc3 = new DataClasses1DataContext();
-            var fullname = (from f in dc3.Users where f.ID == UserID select f.FullName).FirstOrDefault();
-            label1.Text = fullname.ToString();
-            var data = from d in dc3.Quizs where d.ID== UserID select new { d.Name, d.Code ,d.Description};
-            var data2 = from n in dc3.Questions where n.QuizID==UserID select n;
-            int data3=data2.Count();
-            var Last = new List<object> { new { RowCount = data3 } };
-            dataGridView1.DataSource = data;
-            
 
+            // Periksa apakah UserID ada sebelum mengakses data
+            var user = dc3.Users.FirstOrDefault(f => f.ID == UserID);
+            if (user != null)
+            {
+                // Ambil fullname dan set label
+                label1.Text = user.FullName;
+               
+                // Ambil data dari Quizs dan tambahkan ke DataGridView
+                var quizData = from d in dc3.Quizs where d.UserID == UserID select new { d.Name, d.Code, d.Description };
+                foreach (var quiz in quizData)
+                {
+                    DataGridViewRow row = new DataGridViewRow();
+
+                 
+
+                    DataGridViewTextBoxCell namaQuiz = new DataGridViewTextBoxCell();
+                    namaQuiz.Value = quiz.Name;
+                    row.Cells.Add(namaQuiz);
+
+                    DataGridViewTextBoxCell codeQuiz = new DataGridViewTextBoxCell();
+                    codeQuiz.Value = quiz.Code;
+                    row.Cells.Add(codeQuiz);
+
+                    DataGridViewTextBoxCell descQuiz = new DataGridViewTextBoxCell();
+                    descQuiz.Value = quiz.Description;
+                    row.Cells.Add(descQuiz);
+
+                    var questionCount = dc3.Questions.Count(n => n.QuizID == UserID);
+                    DataGridViewTextBoxCell numberQuiz = new DataGridViewTextBoxCell();
+                    numberQuiz.Value = questionCount;
+                    row.Cells.Add(numberQuiz);
+
+                    
+                    dataGridView1.Rows.Add(row);
+                }
+
+            }
+            else
+            {
+ 
+                MessageBox.Show("UserID not found!");
+            }
 
         }
 
