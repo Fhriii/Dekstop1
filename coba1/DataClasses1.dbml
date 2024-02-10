@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QuizinAja" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=MSI\SQLEXPRESS;Initial Catalog=QuizinAja;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="coba1.Properties.Settings" SettingsPropertyName="QuizinAjaConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Users" Member="Users">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-FAHRI\SQLEXPRESS;Initial Catalog=QuizinAja;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="coba1.Properties.Settings" SettingsPropertyName="QuizinAjaConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.[User]" Member="Users">
     <Type Name="User">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Username" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
@@ -8,18 +8,6 @@
       <Column Name="DateOfBirth" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="Password" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
       <Association Name="User_Quiz" Member="Quizs" ThisKey="ID" OtherKey="UserID" Type="Quiz" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Quiz" Member="Quizs">
-    <Type Name="Quiz">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
-      <Column Name="Code" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Quiz_Question" Member="Questions" ThisKey="ID" OtherKey="QuizID" Type="Question" />
-      <Association Name="User_Quiz" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Question" Member="Questions">
@@ -32,7 +20,42 @@
       <Column Name="OptionC" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="OptionD" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="CorrectAnswer" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Association Name="Question_ParticipantAnswer" Member="ParticipantAnswers" ThisKey="ID" OtherKey="QuestionID" Type="ParticipantAnswer" />
       <Association Name="Quiz_Question" Member="Quiz" ThisKey="QuizID" OtherKey="ID" Type="Quiz" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Quiz" Member="Quizs">
+    <Type Name="Quiz">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Quiz_Question" Member="Questions" ThisKey="ID" OtherKey="QuizID" Type="Question" />
+      <Association Name="Quiz_Participant" Member="Participants" ThisKey="ID" OtherKey="QuizID" Type="Participant" />
+      <Association Name="User_Quiz" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Participant" Member="Participants">
+    <Type Name="Participant">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="QuizID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ParticipantNickname" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ParticipationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TimeTaken" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Participant_ParticipantAnswer" Member="ParticipantAnswers" ThisKey="ID" OtherKey="ParticipantID" Type="ParticipantAnswer" />
+      <Association Name="Quiz_Participant" Member="Quiz" ThisKey="QuizID" OtherKey="ID" Type="Quiz" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ParticipantAnswer" Member="ParticipantAnswers">
+    <Type Name="ParticipantAnswer">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ParticipantID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QuestionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Answer" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Association Name="Participant_ParticipantAnswer" Member="Participant" ThisKey="ParticipantID" OtherKey="ID" Type="Participant" IsForeignKey="true" />
+      <Association Name="Question_ParticipantAnswer" Member="Question" ThisKey="QuestionID" OtherKey="ID" Type="Question" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

@@ -83,5 +83,21 @@ namespace coba1
             this.Hide();
             addquiz.ShowDialog();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+  if (dataGridView1.Columns[e.ColumnIndex].Name == "delete" && e.RowIndex >= 0)
+    {
+        // Konfirmasi penghapusan
+        if (MessageBox.Show("Apakah Anda yakin ingin menghapus baris ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+        {
+            // Ambil indeks baris yang dipilih
+            int rowIndex = e.RowIndex;
+
+            // Hapus baris dari DataGridView berdasarkan indeks baris
+            dataGridView1.Rows.RemoveAt(rowIndex);
+        }
+    }
+        }
     }
 }
