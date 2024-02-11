@@ -76,14 +76,34 @@ namespace coba1
             answer_C.Text = "";
             answer_D.Text = "";
             quest.Text = "";
+
+        }
+        public void clearQuiz()
+        {
+            qname.Text = "";
+            qcode.Text = "";
+            desc.Text = "";
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             DataClasses1DataContext dc4 = new DataClasses1DataContext();
+            var quizz= (from q in dc4.Quizs select q).FirstOrDefault();
 
             try
             {
+                Quiz quiz = new Quiz()
+                {
+                    UserID = UserID,
+                    Name = qname.Text,
+                    Code = qcode.Text,
+                    Description = desc.Text ,
+                    CreatedAt = DateTime.Now
+
+                };
+                dc4.Quizs.InsertOnSubmit(quiz);
+                dc4.SubmitChanges();
+                clearQuiz();
                 for (int i = 0; i < dataGridView1.Rows.Count-1;i++)
                 {
                     var questString = dataGridView1.Rows[i].Cells[1].Value.ToString();
@@ -97,7 +117,7 @@ namespace coba1
                     Question questt = new Question
                     {
 
-                        QuizID = UserID,
+                        QuizID = quizz.ID,
                         Question1 = questString,
                         OptionA = opA,
                         OptionB = opB,
@@ -110,9 +130,11 @@ namespace coba1
                     // Insert each Question object inside the loop
                     dc4.Questions.InsertOnSubmit(questt);
                     dc4.SubmitChanges();
+
                 }
-                    MessageBox.Show("Data Tersimpan");
-                    dataGridView1.DataSource = null;
+                DataTable dt = new DataTable();
+                dt.Clear();
+                MessageBox.Show("Data Tersimpan");
 
 
             }
@@ -122,11 +144,10 @@ namespace coba1
             }
         }
 
+        private void Quizname_Enter(object sender, EventArgs e)
+        {
 
-
-
-
-
+        }
     }
 }
 
