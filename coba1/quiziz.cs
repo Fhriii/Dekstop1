@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +41,9 @@ namespace coba1
             radioButton2.Text = data1.OptionB;
             radioButton3.Text = data1.OptionC;
             radioButton4.Text = data1.OptionD;
+            prev.Hide();
+            next.Show();
+            finish.Hide();
         }
 
 
@@ -69,7 +73,9 @@ namespace coba1
             radioButton2.Text = data2.OptionB;
             radioButton3.Text = data2.OptionC;
             radioButton4.Text = data2.OptionD;
-
+            prev.Show();
+            next.Show();
+            finish.Hide();
         }
 
         private void no3_Click(object sender, EventArgs e)
@@ -81,6 +87,10 @@ namespace coba1
             radioButton2.Text = data3.OptionB;
             radioButton3.Text = data3.OptionC;
             radioButton4.Text = data3.OptionD;
+            no3.BackColor = Color.MediumBlue;
+            prev.Show();
+            next.Show();
+            finish.Hide();
         }
 
         private void no4_Click(object sender, EventArgs e)
@@ -92,6 +102,9 @@ namespace coba1
             radioButton2.Text = data4.OptionB;
             radioButton3.Text = data4.OptionC;
             radioButton4.Text = data4.OptionD;
+            prev.Show();
+            next.Show();
+            finish.Hide();
         }
 
         private void no5_Click(object sender, EventArgs e)
@@ -103,6 +116,14 @@ namespace coba1
             radioButton2.Text = data5.OptionB;
             radioButton3.Text = data5.OptionC;
             radioButton4.Text = data5.OptionD;
+            next.Hide();
+            prev.Show();
+            
+        }
+
+        private void finish_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

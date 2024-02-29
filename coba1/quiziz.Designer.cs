@@ -44,6 +44,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.questText = new System.Windows.Forms.Label();
             this.nameparticipant = new System.Windows.Forms.Label();
+            this.finish = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +61,7 @@
             this.groupBox1.Size = new System.Drawing.Size(257, 341);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Question List";
             // 
             // no5
             // 
@@ -104,16 +105,18 @@
             // 
             // no1
             // 
+            this.no1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.no1.Location = new System.Drawing.Point(22, 56);
             this.no1.Name = "no1";
             this.no1.Size = new System.Drawing.Size(41, 30);
             this.no1.TabIndex = 0;
             this.no1.Text = "1";
-            this.no1.UseVisualStyleBackColor = true;
+            this.no1.UseVisualStyleBackColor = false;
             this.no1.Click += new System.EventHandler(this.no1_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.finish);
             this.groupBox2.Controls.Add(this.next);
             this.groupBox2.Controls.Add(this.prev);
             this.groupBox2.Controls.Add(this.radioButton4);
@@ -213,6 +216,16 @@
             this.nameparticipant.Size = new System.Drawing.Size(141, 29);
             this.nameparticipant.TabIndex = 3;
             // 
+            // finish
+            // 
+            this.finish.Location = new System.Drawing.Point(252, 318);
+            this.finish.Name = "finish";
+            this.finish.Size = new System.Drawing.Size(75, 23);
+            this.finish.TabIndex = 7;
+            this.finish.Text = "Finish";
+            this.finish.UseVisualStyleBackColor = true;
+            this.finish.Click += new System.EventHandler(this.finish_Click);
+            // 
             // quiziz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,5 +261,6 @@
         private System.Windows.Forms.Label nameparticipant;
         private System.Windows.Forms.Button next;
         private System.Windows.Forms.Button prev;
+        private System.Windows.Forms.Button finish;
     }
 }
