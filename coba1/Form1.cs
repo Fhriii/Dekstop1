@@ -22,7 +22,7 @@ namespace coba1
             var user = (from u in dc.Users where u.Username==textBox1.Text select u).FirstOrDefault();
             
             
-            if (user != null)
+            if (!(user is null))
             {
                 // Periksa apakah password sesuai
                 if (user.Password == textBox2.Text)
@@ -60,6 +60,14 @@ namespace coba1
 
             this.Hide();
             akun.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            EnterQuiz eq = new EnterQuiz();
+            this.Hide();
+            eq.ShowDialog();
+
         }
     }
 }

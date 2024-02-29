@@ -16,5 +16,40 @@ namespace coba1
         {
             InitializeComponent();
         }
+
+        DataClasses1DataContext dc=new DataClasses1DataContext();
+        public int quizID;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                var codeQuiz=(from c in dc.Quizs where textBox1.Text==c.Code select c.ID).FirstOrDefault();
+                if (codeQuiz.ToString() =="0")
+                {
+                    MessageBox.Show("Masukkan kode yang cocok");
+                }
+                else
+                {
+                    
+                    quizID = codeQuiz;
+                    quizz(quizID);
+                }
+            }
+            catch {
+
+                MessageBox.Show("Eror");
+            }
+            
+        }
+        public void quizz(int quizIID)
+        {
+            quiziz qz = new quiziz();
+            qz.QuizID = quizIID;
+            this.Hide();
+            qz.ShowDialog();
+            
+
+        }
     }
 }
