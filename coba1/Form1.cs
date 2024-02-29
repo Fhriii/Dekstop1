@@ -69,5 +69,6 @@ namespace coba1
             eq.ShowDialog();
 
         }
+
     }
 }

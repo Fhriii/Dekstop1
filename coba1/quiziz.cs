@@ -17,9 +17,21 @@ namespace coba1
             InitializeComponent();
         }
         public int QuizID { get; set; }
+        public String Name { get; set; }
+
+        
         private void quiziz_Load(object sender, EventArgs e)
         {
+            nameparticipant.Text = Name;
             MessageBox.Show(QuizID.ToString());
+            
+        }
+
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

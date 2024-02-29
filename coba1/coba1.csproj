@@ -95,6 +95,12 @@
     <Compile Include="quiziz.Designer.cs">
       <DependentUpon>quiziz.cs</DependentUpon>
     </Compile>
+    <Compile Include="quizReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="quizReport.Designer.cs">
+      <DependentUpon>quizReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewQuizReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,9 @@
     </Compile>
     <EmbeddedResource Include="quiziz.resx">
       <DependentUpon>quiziz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="quizReport.resx">
+      <DependentUpon>quizReport.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="DataClasses1.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>

@@ -33,7 +33,7 @@ namespace coba1
                 {
                     
                     quizID = codeQuiz;
-                    quizz(quizID);
+                    quizz(quizID,textBox2.Text);
                 }
             }
             catch {
@@ -42,10 +42,11 @@ namespace coba1
             }
             
         }
-        public void quizz(int quizIID)
+        public void quizz(int quizIID,String participanName)
         {
             quiziz qz = new quiziz();
             qz.QuizID = quizIID;
+            qz.Name= participanName;
             this.Hide();
             qz.ShowDialog();
             
