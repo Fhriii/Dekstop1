@@ -127,7 +127,7 @@ namespace coba1
                     };
 
 
-                    // Insert each Question object inside the loop
+                
                     dc4.Questions.InsertOnSubmit(questt);
                     dc4.SubmitChanges();
 
