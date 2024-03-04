@@ -106,7 +106,7 @@ namespace coba1
         {
             panel5.BringToFront();
             var data5 = (from no5 in dc.Questions where no5.ID == quizIDs[4] select no5).FirstOrDefault();
-            label6.Text = data5.Question1;
+            label7.Text = data5.Question1;
             questionid = data5.ID;
             radioButton17.Text = data5.OptionA;
             radioButton18.Text = data5.OptionB;
@@ -185,6 +185,11 @@ namespace coba1
         }
 
         private void button2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
         {
 
         }
